@@ -1,0 +1,39 @@
+[{
+    "loginId": "milkhadk",
+    "password": "cGFzcfsd3dvcmQK",
+    "roles": [
+        {
+            "id": 1,
+            "roleName": "SME"
+        },
+        {
+            "id": 2,
+            "roleName": "Account Automation SPOC"
+        }
+    ],
+    "longName": "Milind Khadkikaadfdar"
+},
+{
+    "loginId": "asansari",
+    "password": "12345",
+    "roles": [
+        {
+            "id": 1,
+            "roleName": "Admin"
+        }
+    ],
+    "longName": "Asfiya Ansari"
+},
+{
+    "loginId": "John",
+    "password": "admin",
+    "roles": [
+        {
+            "id": 3,
+            "roleName": "Admin"
+        }
+    ],
+    "longName": "John Doe"
+}
+
+]

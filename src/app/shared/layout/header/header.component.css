@@ -1,0 +1,17 @@
+.commonHeader {
+    background: #0070ad;
+    height:40px;
+    padding-top:11px;
+}
+
+.headerTitle {
+    color:#f2f8fb;
+    font-family: Ubuntu-Medium;
+    font-size:20px;
+    margin-left:20px;
+}
+
+.navRight {
+    float:right;
+    margin:0 10% 0 0;
+}

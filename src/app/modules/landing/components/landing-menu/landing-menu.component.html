@@ -1,0 +1,104 @@
+<!-- <div>
+  <p>home works!</p>
+  <p>welcome 
+    <span>{{currentUser.username}}, </span>
+      <span *ngIf="isSingleRoleUser">logged in as admin </span>
+      <span *ngIf="!isAdmin">please select role</span>
+    </p>
+  <div>-->
+ <!--  keep it as a comment <a routerLink="masterdatamanagement">master</a>-->
+    <!--   <a  (click)="clickFunction()">master</a>
+      
+  </div>
+</div>-->
+<div class="homeContainer">
+    <!-- <div class="topnav-right">
+      <a href="#" ><img  class="alert_img "  src="../../assets/images/home_alert.png" alt="Card image cap"></a>
+     <a href="#" (click)="logout()" ><img  src="../../assets/images/home_profile.png"  alt="Card image cap"></a>
+      <span class="dropdown">
+        <a href="#" class="dropdown-toggle"  ><img  src="../../assets/images/home_profile.png" class="dropdown-toggle" alt="Card image cap"></a>
+        <div class="dropdown-menu">
+          <a class="dropdown-item" (click)="logout()">Logout</a>
+        </div>
+      </span>
+      
+    </div> -->
+    <div class="container landing-menu">
+      <div class="header">
+        <img  src="assets/images/cg_home_logo.png" alt="Card image cap">
+        <h1 class="card-title text-center">Assessment Online Portal</h1>
+        <p class="welcomeText">welcome 
+          <span>{{currentUser.loginId}}, </span>
+            <span *ngIf="isSingleRoleUser">you are logged in as {{currentRole[0].authority}} </span>
+            <span *ngIf="!isSingleRoleUser">please select your role for this session</span>
+          </p>
+          <div  *ngIf="!isSingleRoleUser" class="form-group row"> 
+            <div class="col-lg-3 col-md-3 smallRadio" *ngFor="let role  of currentRole">
+              <label class="radio-inline">
+                   <!-- <input name="gender"  [(ngModel)]="radioVal" id='{{role.roleName}}'  [value]='role.roleName' type="radio" (change)="onRoleChange($event.target.value)" /> -->
+                   <input name="gender"  [(ngModel)]="radioVal" id='{{role.authority}}'  [value]='role.authority' type="radio" />
+                   <label for='{{role.authority}}'>{{role.authority}}</label>
+               </label>
+          </div>
+         
+     
+     </div>
+      </div>
+      <div class="gridContainer">
+      <div class="row">
+        <div class="pull-left">
+          <!--routerLink='/account'-->
+        <div routerLink='/MasterData' [ngClass]="{'enable' :  ( isSingleRoleUser && currentRole[0].authority=='ROLE_Admin User') }" class="card mg-r-30">
+          
+          <div class="cardImg"><img class="card-img-top img-responsive" src="assets/images/home_logo1.png" alt="Card image cap"></div>
+          <div class="border"></div><div class="card-block">
+            <div class="card-title">Master Data Management </div>
+            
+          </div>
+      </div>
+      </div>
+      <div class="pull-left">
+        
+          <div routerLink='/Assessment' [ngClass]="{'enable' : radioVal==='ROLE_Account Automation SPOC' || radioVal==='ROLE_SME'|| ( isSingleRoleUser && currentRole[0].authority==='ROLE_Admin User') || ( isSingleRoleUser && currentRole[0].authority==='ROLE_SME')  }" class="card mg-r-30">
+          <div class="cardImg"><img class="card-img-top img-responsive" src="assets/images/home_logo2.png"alt="Card image cap"></div>
+          <div class="border"></div><div class="card-block">
+            <div class="card-title">Assesment Configuration </div>
+            
+          </div>
+      </div>
+      </div>
+      <div class="pull-left">
+        
+          <div [ngClass]="{'enable' :  radioVal==='ROLE_Account Automation SPOC' || radioVal==='ROLE_Account Project member'}" class="card mg-r-30">
+          <div class="cardImg"><img class="card-img-top img-responsive" src="assets/images/home_logo3.png"alt="Card image cap"></div>
+          <div class="border"></div>
+          <div class="card-block">
+            <div class="card-title">Data <br>upload </div>
+            
+          </div>
+      </div>
+      </div>
+      <div class="pull-left">
+       
+          <div [ngClass]="{'enable' : radioVal==='ROLE_Account Project member' || radioVal==='ROLE_SME' || radioVal ==='ROLE_Account Automation SPOC' || radioVal==='ROLE_Account Head' || ( isSingleRoleUser && currentRole[0].authority=='ROLE_SME') }" class="card mg-r-30">
+          <div class="cardImg"> <img class="card-img-top img-responsive" src="assets/images/home_logo4.png" alt="Card image cap"></div>
+          <div class="border"></div><div class="card-block">
+            <div class="card-title">Assessments</div>
+          </div>
+      </div>
+      </div>
+      <div class="pull-left">
+        <div  [ngClass]="{'enable' : radioVal==='ROLE_Account Project member' || radioVal==='ROLE_SME'|| radioVal==='spoc' || radioVal==='ROLE_Account Head' || ( isSingleRoleUser && currentRole[0].authority=='ROLE_GI&A Lead')}" class="card">
+        
+          <div class="cardImg"><img class="card-img-top img-responsive" src="assets/images/home_logo5.png" alt="Card image cap"></div>
+          <div class="border"></div> <div class="card-block">
+            <div class="card-title">Reports</div>
+          </div>
+      </div>
+      </div>
+      
+    </div>
+     </div>   
+    </div>
+  </div>
+  <router-outlet></router-outlet>

@@ -1,0 +1,30 @@
+<form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+    <div class="block">
+      <div class="container">
+      
+          <div class="card card-signin ">
+            <div class="card-img-top"><img class="card-img-top" src="assets/images/cg_home_logo.png" alt="Card image cap"></div>
+            <div class="card-body">
+              <h5 class="card-title text-center"> Assessment Online Portal
+               <!--<img class="card-img-top" src="../../assets/images/Assessment Online Portal.png" alt="Card image cap">-->
+              </h5>
+              <div class="form-signin">
+                <div class="form-label-group">
+                  <input type="text" id="inputName" formControlName="loginId" class="form-control" placeholder="username" required autofocus>
+                  
+                </div>
+  
+                <div class="form-label-group">
+                  <input type="password" id="inputPassword" formControlName="password" class="form-control" placeholder="Password" required>
+                </div>
+                <div class="error_block"  *ngIf="errMessage">{{errMessage}}</div>
+                <button class="btn  btn-primary" type="submit">Login </button>
+               <div class="forget_link"><a href="#" >forgot password ?</a></div>
+           
+              </div>
+            </div>
+          </div>
+       
+      </div>
+      </div>
+      </form>

@@ -1,0 +1,44 @@
+[
+    {
+        "Name": "Product1",
+        "ID": 1, 
+        "Value": 1.5,
+        "Status": "In Progress"
+    },
+    {
+        "Name": "Product2",
+        "ID": 2, 
+        "Value": 9.5,
+        "Status": "In Progress"
+    },
+    {
+        "Name": "Product3",
+        "ID": 3, 
+        "Value": 10.5,
+        "Status": "In Progress"
+    },
+    {
+        "Name": "Product4",
+        "ID": 4, 
+        "Value": 8.5,
+        "Status": "In Progress"
+    },
+    {
+        "Name": "Product5",
+        "ID": 5, 
+        "Value": 4.5,
+        "Status": "In Progress"
+    },
+    {
+        "Name": "Product6",
+        "ID": 6, 
+        "Value": 5.5,
+        "Status": "In Progress"
+    },
+    {
+        "Name": "Product7",
+        "ID": 7, 
+        "Value": 2.5,
+        "Status": "In Progress"
+    }
+]

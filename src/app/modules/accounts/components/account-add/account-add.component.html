@@ -1,0 +1,136 @@
+<form class="dialog-wrapper" style="overflow: hidden;" [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+  <!-- [style.width.px]="dwidth"  [style.height.px]="dheight"  -->
+
+  <div class="dialog-header">Add New Account</div>
+  
+  <div [@fade]="isOpen ? 'open' : 'closed'" class="dialog-msg">New Account {{accountNameVal}} has been added</div>
+
+  <div class="dialog-row" style="margin-top: 20px;">
+    <div style="width: 33%" class="dialog-input-text">
+      <mat-form-field class="text-form-field" floatLabel='never' style="padding-right:15px;">
+        <p>Account Name<span style="color:red">*</span></p>
+        <!-- <span ng-show="!accountNameField">Sorry, the field is empty!</span> -->
+        <input matInput type="text" (change)="onAccountChange($event)" formControlName="firstName" class="form-control"
+          [ngClass]="{ 'is-invalid': submitted && f.firstName.errors }">
+        <button mat-button *ngIf="value" matSuffix mat-icon-button aria-label="Clear" (click)="value=''">
+          <mat-icon>close</mat-icon>
+        </button>
+      </mat-form-field>
+      <!-- <div *ngIf="submitted && f.firstName.errors" class="invalid-feedback">
+                    <div *ngIf="f.firstName.errors.required">Account Name is required</div>
+           </div> -->
+    </div>
+    <div style="width: 56%" class="dialog-input-text">
+      <mat-form-field class="text-form-field" floatLabel='never' style="padding: 0 15px;">
+        <p>Description</p>
+        <input matInput type="text" (change)="onDescChange($event)" formControlName="description" class="form-control"
+          [ngClass]="{ 'is-invalid': submitted && f.description.errors }">
+        <button mat-button *ngIf="value" matSuffix mat-icon-button aria-label="Clear" (click)="value=''">
+          <mat-icon>close</mat-icon>
+        </button>
+      </mat-form-field>
+      <!-- <div *ngIf="submitted && f.description.errors" class="invalid-feedback">
+                        <div *ngIf="f.description.errors.required">Description is required</div>
+           </div> -->
+    </div>
+    <div style="width: 10%" class="dialog-input-text">
+      <mat-form-field class="text-form-field" floatLabel='never' style="padding-left:15px;">
+        <p>Team Size<span style="color:red">*</span></p>
+        <input min="1" matInput type="number" (change)="onTeamSizeChange($event)" formControlName="teamSize"
+          class="form-control" [ngClass]="{ 'is-invalid': submitted && f.teamSize.errors }">
+        <button mat-button *ngIf="value" matSuffix mat-icon-button aria-label="Clear" (click)="value=''">
+          <mat-icon>close</mat-icon>
+        </button>
+      </mat-form-field>
+      <!-- <div *ngIf="submitted && f.teamSize.errors" class="invalid-feedback">
+                        <div *ngIf="f.teamSize.errors.required">Team size is required</div>
+           </div>
+          <div *ngIf="submitted && f.teamSize.errors && (f.teamSize.dirty || f.teamSize.touched)">
+              <p *ngIf="f.teamSize.errors.pattern" class="invalid-feedback">Number Only</p>
+            </div> -->
+    </div>
+    <div style="clear:both"></div>
+  </div>
+
+  <div class="dialog-row" >
+    <div class="dialog-dropdown" style="width: 33%!important;">
+      <p>SBU Name<span style="color:red;">*</span></p>
+      <mat-form-field floatLabel='never' class="dropdown-select" style="padding-right:15px;">
+        <mat-label>Select</mat-label>
+        <mat-select (selectionChange)="changeSBUs($event.value)" formControlName="title" class="form-control"
+          [ngClass]="{ 'is-invalid': submitted && f.title.errors }" disableRipple>
+          <mat-option *ngFor="let sbuname of allSBUsArray" [value]="sbuname.value">
+            {{sbuname.viewValue}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+      <!-- <div *ngIf="submitted && f.title.errors" class="invalid-feedback">
+                    <div *ngIf="f.title.errors.required">SBU is required</div>
+            </div> -->
+    </div>
+    <div class="dialog-dropdown"  style="width: 33%!important;">
+      <p  style="padding-left:15px;"> BU Name<span style="color:red;">*</span></p>
+      <mat-form-field floatLabel='never'  class="dropdown-select" style="padding: 0 15px; ">
+        <mat-label>Select</mat-label>
+        <mat-select (selectionChange)="changeBUs($event.value)" formControlName="title2" class="form-control"
+          [ngClass]="{ 'is-invalid': submitted && f.title2.errors }" disableRipple>
+          <mat-option *ngFor="let buname of allBUsArray" [value]="buname.value">
+            {{buname.viewValue}}
+          </mat-option>
+        </mat-select>
+
+      </mat-form-field>
+      <!-- <div *ngIf="submitted && f.title2.errors" class="invalid-feedback">
+                    <div *ngIf="f.title2.errors.required">BU is required</div>
+                </div> -->
+    </div>
+    <div class="dialog-dropdown"  style="width: 33%!important;">
+      <p  style="padding-left:15px;">Market Unit<span style="color:red">*</span></p>
+      <mat-form-field floatLabel='never'  class="dropdown-select" style="padding-left:15px;">
+        <mat-label>Select</mat-label>
+        <mat-select (selectionChange)="changeMUs($event.value)" formControlName="title3" class="form-control"
+          [ngClass]="{ 'is-invalid': submitted && f.title3.errors }" disableRipple>
+          <mat-option *ngFor="let muname of allMarketUnitsArray" [value]="muname.value">
+            {{muname.viewValue}}
+          </mat-option>
+        </mat-select>
+
+      </mat-form-field>
+      <!-- <div *ngIf="submitted && f.title3.errors" class="invalid-feedback">
+                    <div *ngIf="f.title3.errors.required">Market Unit is required</div>
+                </div> -->
+    </div>
+  </div>
+  <!-- <div class="dialog-row" >
+          <div class="date-wrapper">
+            <p>Activation*</p>
+            <div class="dialog-date" >
+                        <mat-form-field color="accent" floatLabel='never'>
+              <mat-label>&nbsp;/&nbsp;&nbsp;/</mat-label>
+              <input  formControlName="starter" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.starter.errors }" (dateChange)="startEvent('change', $event)" (dateInput)="startEvent('change', $event)"  matInput  [min]="minDate1" [matDatepicker]="picker1">
+              <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+              <mat-datepicker #picker1></mat-datepicker>
+            </mat-form-field>
+            <p>Start</p>
+         </div>
+  <div class="dialog-date">
+            <mat-form-field color="accent" floatLabel='never'>              <mat-label>&nbsp;/&nbsp;&nbsp;/</mat-label>
+              <input formControlName="ender" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.ender.errors }" (dateChange)="endEvent('change', $event)" matInput  [min]="minDate2" [matDatepicker]="picker2">
+              <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
+              <mat-datepicker #picker2 color="primary"></mat-datepicker>
+            </mat-form-field>
+               <p>End</p>
+       </div>
+       <div style="clear: both"></div>          
+          </div>  
+      </div> -->
+  <div class="dialog-row" style="text-align: right; margin-top: 180px;">
+    <button class="blue-outline-button" (click)="cancel()" mat-stroked-button color="primary">Cancel</button>
+     &nbsp;
+    <button class="blue-solid-button" (click)="addRow()" mat-raised-button color="primary"
+      [disabled]="registerForm.invalid">Add new</button>
+     &nbsp;
+    <button class="blue-solid-button" (click)="saveAndSubmit()" mat-raised-button color="primary"
+      [disabled]="registerForm.invalid">Save and submit</button>
+  </div>
+</form>

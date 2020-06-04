@@ -1,0 +1,117 @@
+/* :root {
+    --input-padding-x: 1.5rem;
+    --input-padding-y: .75rem;
+  }*/
+  
+  .block {
+    background-image: url(src/assets/images/login.png);
+    background-size: cover;
+    height: 100vh;
+    overflow: hidden;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+  }
+ 
+  .card-signin {
+    padding:30px 20px 20px 20px;
+    border: 0;
+    border-radius: 1rem;margin: 0 auto;
+    margin-top:7%;
+    width:500px;
+    text-align: center;
+    box-shadow: 0 0.5rem 1rem 0 rgba(0, 0, 0, 0.1);
+    background-color: #f2f8fb;
+  }
+  .card-img-top{
+    width: 200px;
+    height: 40px;
+    margin: 0 auto;
+  }
+  .card-signin .card-title {
+    margin-bottom: 15px !important;
+
+    font-size: 25px !important;
+    margin:0 auto;
+  }
+  
+  .card-signin .card-body {
+    padding: 2rem;
+  }
+  
+  .form-signin {
+    width: 100%;
+    margin-top: 35px !important;
+  }
+  
+  .form-signin .btn {
+    font-family: Ubuntu-Regular;
+    font-size: 15px;
+    background-color: #12abdb;
+    color: #f7f7f7;
+    border-radius: 15px;
+    padding: 5px 50px;
+    border: 0 none;
+  }
+  
+  .form-label-group input {
+    height: 35px;
+    border-radius: 0 !important;
+    width: 300px;
+    margin-bottom: 30px;
+    border: 1px solid #dddddd;
+    margin: 25px auto;
+    font-family: Ubuntu-Regular;
+  }
+  
+ 
+  .form-label-group>label {
+    position: absolute;
+    top: 15px;
+    left: 22px;
+    display: block;
+    width: 100%;
+    margin-bottom: 0;text-align: left;
+    /* Override default `<label>` margin */
+    line-height: 1.5;
+    color: #2c2c2c;
+    border: 1px solid transparent;
+    border-radius: .25rem;
+    transition: all .1s ease-in-out;
+  }
+  
+  .form-label-group input::-webkit-input-placeholder {
+    color: black;
+  }
+  
+  .form-label-group input:-ms-input-placeholder {
+    color: black;
+  }
+  
+  .form-label-group input::-ms-input-placeholder {
+    color: black;
+  }
+  
+  .form-label-group input::-moz-placeholder {
+    color: black;
+  }
+  
+  .form-label-group input::placeholder {
+    color: black;
+  }
+  .card-title { 
+    font-family: Ubuntu-Medium;
+    font-size: 25px;
+    color: #2b0a3d;}
+  .forget_link{margin-top:30px}
+  .forget_link a{color: red;}
+  
+.error_block
+{
+  margin-top:-10px;
+  margin-bottom: 5px;
+  color:red;;
+}
+  
+  

@@ -1,0 +1,71 @@
+<div class="tabContentWrapper">
+    <div class="addData">
+        <button class="btn btnPrimary" mat-raised-button (click)="addUser()" color="primary">Add New User</button>
+      </div>
+    <h2>User List</h2>
+    <div class="searchSortwrapper">
+        <div class="searchList">
+            <mat-form-field floatLabel=never>
+                <mat-label>Search</mat-label>
+                <mat-icon>search</mat-icon>
+                <input [(ngModel)]="searchUser" matInput (keyup)="userFilter($event)" placeholder=" ">
+                <mat-icon class="clearSearch" (click)="clearUserSearch()" *ngIf="searchUser">close</mat-icon>
+              </mat-form-field>
+        </div>
+        <div class="sortRole"></div>
+    </div>
+
+    <div class="tableWrapper masterData">
+        <table mat-table #table [dataSource]="dataSource" matSort>
+            <ng-container matColumnDef="Sr no">
+                <mat-header-cell *matHeaderCellDef mat-sort-header> Sr no </mat-header-cell>
+                <mat-cell *matCellDef="let item; let i = index"> 
+                    {{ (paginatorRef.pageIndex * paginatorRef.pageSize) + (i + 1) }} </mat-cell>
+            </ng-container>
+            <ng-container matColumnDef="User Name">
+                <mat-header-cell *matHeaderCellDef mat-sort-header> User Name </mat-header-cell>
+                <mat-cell *matCellDef="let element"><span class="ellipsis"> {{element.longName}} </span></mat-cell>
+            </ng-container>
+            <ng-container matColumnDef="Login-id">
+                <mat-header-cell *matHeaderCellDef mat-sort-header> Login-id </mat-header-cell>
+                <mat-cell *matCellDef="let element"> <span class="ellipsis">{{element.loginId}}</span> </mat-cell>
+            </ng-container>
+
+            <ng-container matColumnDef="User Email">
+                <mat-header-cell *matHeaderCellDef mat-sort-header> User Email </mat-header-cell>
+                <mat-cell *matCellDef="let element"><span class="ellipsis"> {{element.emailId}} </span></mat-cell>
+            </ng-container>
+
+            <ng-container matColumnDef="User Role">
+                <mat-header-cell *matHeaderCellDef mat-sort-header> User Role </mat-header-cell>
+                <mat-cell *matCellDef="let element"><span class="ellipsis"> {{element.roles[0].roleName}} </span></mat-cell>
+            </ng-container>
+
+            <ng-container matColumnDef="SME Area">
+                <mat-header-cell *matHeaderCellDef mat-sort-header> SME Area </mat-header-cell>
+                <mat-cell *matCellDef="let element"> <span class="ellipsis">{{element.Value}} </span></mat-cell>
+            </ng-container>
+
+            <ng-container matColumnDef="SBU Name">
+                <mat-header-cell *matHeaderCellDef mat-sort-header> SBU Name </mat-header-cell>
+                <mat-cell *matCellDef="let element"><span class="ellipsis"> {{element.Value}} </span></mat-cell>
+            </ng-container>
+
+            <ng-container matColumnDef="BU Name">
+                <mat-header-cell *matHeaderCellDef mat-sort-header> BU Name </mat-header-cell>
+                <mat-cell *matCellDef="let element"><span class="ellipsis"> {{element.Status}}</span> </mat-cell>
+            </ng-container>
+
+            <ng-container matColumnDef="Action">
+                <mat-header-cell *matHeaderCellDef mat-sort-header> Action </mat-header-cell>
+                <mat-cell *matCellDef="let element">
+                 <i class="icon editIcon"></i>
+                <i class="icon deleteIcon marginL20"></i> <!--(click)="AccountDelete(element)"-->
+                </mat-cell>
+            </ng-container>
+            <mat-header-row mat-header-row *matHeaderRowDef="columnsToDisplay;sticky:true;"></mat-header-row>
+            <mat-row mat-row *matRowDef="let row; columns: columnsToDisplay"></mat-row>
+        </table>
+        <mat-paginator [pageSizeOptions]="[2, 4]" [pageSize]="2" [length]="2" #paginatorRef showFirstLastButtons></mat-paginator>
+    </div>
+</div>

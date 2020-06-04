@@ -1,0 +1,29 @@
+
+.radio{
+    padding-top: 10px;
+    float: left;
+    width:1%;
+}
+.radio_val{padding-bottom: 5px;}
+[type="radio"]:checked + label:before,
+[type="radio"]:not(:checked) + label:before {
+    width: 18px;
+    height: 18px;
+    border: 1px solid #12ABDB;
+    border-radius: 100%;
+    background: #fff;
+}
+[type="radio"]:checked + label:after,
+[type="radio"]:not(:checked) + label:after {
+    content: '';
+    width: 17px;
+    height: 17px;
+    /* background: #12ABDB; */
+    position: absolute;
+    top: 1px;
+    left: 0.5px;
+    border-radius: 100%;
+    transition: all 0.2s ease;
+    border: 5px solid #12ABDB;
+    background-color: blue;
+}

@@ -1,0 +1,66 @@
+<div class="tabContentWrapper">
+    <div class="addData alignment">
+        <!-- <button class="btn btnPrimary" *ngIf="isTrue" mat-raised-button (click)="InitiateAssessment()" color="primary">Initiate Assessment
+        </button> -->
+        <button class="btn btnPrimary"  mat-raised-button (click)="InitiateAssessment()" color="primary">Initiate Assessment
+        </button>
+    </div>
+    <div class="addData">
+        <button class="btn btnPrimary" mat-raised-button color="primary">New Assessment Template
+        </button>
+    </div>
+    <h2>Assessment List</h2>
+    <div class="searchSortwrapper">
+        <div class="searchList">
+            <mat-form-field floatLabel=never>
+                <mat-label>Search</mat-label>
+                <mat-icon>search</mat-icon>
+                <input [(ngModel)]="searchAssessment" matInput (keyup)="assessmentFilter($event)" placeholder=" ">
+                <mat-icon class="clearSearch" (click)="clearAssessmentSearch()" *ngIf="searchAssessment">close</mat-icon>
+            </mat-form-field>
+        </div>
+        <div class="sortRole"></div>
+    </div>
+
+    <div class="tableWrapper masterData">
+        <table mat-table #table [dataSource]="dataSource" matSort>
+            <ng-container matColumnDef="Sr no">
+                <mat-header-cell *matHeaderCellDef mat-sort-header> Sr no </mat-header-cell>
+                <mat-cell *matCellDef="let item; let i = index">
+                    {{ (paginatorRef.pageIndex * paginatorRef.pageSize) + (i + 1) }} </mat-cell>
+            </ng-container>
+
+            <ng-container matColumnDef="Template Name">
+                <mat-header-cell *matHeaderCellDef mat-sort-header> Template Name </mat-header-cell>
+                <mat-cell *matCellDef="let element"> <span class="ellipsis">{{element.templateName}}</span> </mat-cell>
+            </ng-container>
+            <ng-container matColumnDef="Template Type">
+                <mat-header-cell *matHeaderCellDef mat-sort-header> Template Type </mat-header-cell>
+                <mat-cell *matCellDef="let element"> <span class="ellipsis">{{element.templatetype}}</span> </mat-cell>
+            </ng-container>
+            <ng-container matColumnDef="Status">
+                <mat-header-cell *matHeaderCellDef mat-sort-header> Status </mat-header-cell>
+                <mat-cell *matCellDef="let element"><span class="ellipsis">{{(element.activeStatus == true) ? 'Active' : 'Inactive'}}</span></mat-cell>
+            </ng-container>
+            <ng-container matColumnDef="Effective Date">
+                <mat-header-cell *matHeaderCellDef mat-sort-header> Effective Date</mat-header-cell>
+                <mat-cell *matCellDef="let element"><span class="ellipsis"> {{element.effectivedate}} </span></mat-cell>
+            </ng-container>
+            <ng-container matColumnDef="Dimensions">
+                <mat-header-cell *matHeaderCellDef mat-sort-header> Dimensions</mat-header-cell>
+                <mat-cell *matCellDef="let element"><span class="ellipsis"> {{element.dimensions}} </span></mat-cell>
+            </ng-container>
+            <ng-container matColumnDef="Action">
+                <mat-header-cell *matHeaderCellDef mat-sort-header> Action </mat-header-cell>
+                <mat-cell *matCellDef="let element">
+                 <i class="icon editIcon"></i>
+                <i class="icon deleteIcon marginL20"></i> <!--(click)="AccountDelete(element)"-->
+                </mat-cell>
+            </ng-container>
+            <mat-header-row mat-header-row *matHeaderRowDef="columnsToDisplay;sticky:true;"></mat-header-row>
+            <mat-row mat-row *matRowDef="let row; columns: columnsToDisplay"></mat-row>
+        </table>
+        <mat-paginator [pageSizeOptions]="[2, 4]" [pageSize]="2" [length]="5" #paginatorRef showFirstLastButtons>
+        </mat-paginator>
+    </div>
+</div>

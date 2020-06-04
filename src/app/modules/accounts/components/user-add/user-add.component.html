@@ -1,0 +1,150 @@
+<form  class="dialog-wrapper"  [style.width.px]="width" 
+style="overflow: hidden;" [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+
+      
+      <div class="dialog-header">Add New User</div>
+      <div [@fade]="isOpen ? 'open' : 'closed'" class="dialog-msg">New User {{UserNameVal}} has been added</div>
+      <div class="dialog-row">
+        <div  style="width: 33%" class="ciap-input-text">
+           <mat-form-field class="text-form-field" floatLabel='never'>
+    
+               <p>User Name*</p>
+               <!-- <span ng-show="!accountNameField">Sorry, the field is empty!</span> -->
+
+               <input matInput type="text" (change)="onUserChange($event)"  formControlName="userName" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.userName.errors }">
+               
+               <button mat-button *ngIf="value" matSuffix mat-icon-button aria-label="Clear" (click)="value=''">
+                 <mat-icon>close</mat-icon>
+               </button>
+
+      
+
+             </mat-form-field>
+             <!-- <div *ngIf="submitted && f.firstName.errors" class="invalid-feedback">
+                 <div *ngIf="f.firstName.errors.required">Account Name is required</div>
+             </div> -->
+       </div>
+       <div  style="width: 33%" class="ciap-input-text">
+           <mat-form-field class="text-form-field" floatLabel='never'>
+               <p>Login-id*</p>
+                   <input matInput type="text" (change)="onLoginChange($event)" formControlName="loginid" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.loginid.errors }">
+                   <button mat-button *ngIf="value" matSuffix mat-icon-button aria-label="Clear" (click)="value=''">
+                     <mat-icon>close</mat-icon>
+                   </button>
+             
+                 </mat-form-field>
+                 <!-- <div *ngIf="submitted && f.description.errors" class="invalid-feedback">
+                     <div *ngIf="f.description.errors.required">Description is required</div>
+                 </div> -->
+       </div>
+       <div  style="width: 33%" class="ciap-input-text">
+      
+         
+           <mat-form-field class="text-form-field" floatLabel='never'>
+               <p>Email-id*</p>
+                   <input  matInput type="text" (change)="onEmailidChange($event)" formControlName="emailid" class="form-control" [ngClass]="{ 'is-invalid': submitted }" >
+                   <button mat-button *ngIf="value" matSuffix mat-icon-button aria-label="Clear" (click)="value=''">
+                     <mat-icon>close</mat-icon>
+                   </button>
+      
+           
+          
+                
+             
+                 </mat-form-field>
+                 <!-- <div *ngIf="submitted && f.teamSize.errors" class="invalid-feedback">
+                     <div *ngIf="f.teamSize.errors.required">Team size is required</div>
+                 </div>
+                 <div *ngIf="submitted && f.teamSize.errors && (f.teamSize.dirty || f.teamSize.touched)">
+                     <p *ngIf="f.teamSize.errors.pattern" class="invalid-feedback">Number Only</p>
+                   </div> -->
+               
+       </div> 
+       <div style="clear:both"></div>
+   </div>
+   <div class="dialog-row">
+       <div class="user-role-wrapper pull-left" style="width: 33%">
+          <div class="chck pull-left" >
+             <p>User Role</p>
+            <mat-checkbox class="white" formControlName="chk1"  (change)="updateChkbxArray('1', $event.checked)"  >SME</mat-checkbox><br>
+            <mat-checkbox class="white" formControlName="chk2"  (change)="updateChkbxArray('2', $event.checked)">Account Automation Spoc</mat-checkbox><br>
+            <mat-checkbox class="white" formControlName="chk3"   (change)="updateChkbxArray('3', $event.checked)">Account Project Member</mat-checkbox>
+           
+          </div>
+         <div  class="radio">  <mat-radio-group  formControlName="radio_role" aria-label="Select an option">
+            <mat-radio-button  (change)="changeRadio($event)" class="radio_val" value="4">Admin</mat-radio-button>
+            <mat-radio-button   (change)="changeRadio($event)" class="radio_val" value="6">SBU Head </mat-radio-button>
+            <mat-radio-button  (change)="changeRadio($event)"  class="radio_val" value="7">BU Head</mat-radio-button>
+            <mat-radio-button  (change)="changeRadio($event)"  class="radio_val" value="8">SBU Spoc</mat-radio-button>
+            <mat-radio-button (change)="changeRadio($event)"  class="radio_val" value="9">BU Spoc</mat-radio-button>
+            <mat-radio-button (change)="changeRadio($event)"  class="radio_val" value="10">GI&A Lead</mat-radio-button>
+            <mat-radio-button  (change)="changeRadio($event)"  class="radio_val" value="5">Account Head</mat-radio-button>
+           </mat-radio-group>
+         </div>
+         <div style="clear:both"></div>
+       </div>
+       <div  class="ciap-dropdown" style="float: left;width: 33%;">
+        <p> SME Area</p>
+        <mat-form-field floatLabel='never'>
+            <mat-label>Select</mat-label>
+            <mat-select [attr.disabled]="disabled? '' : null" [disabled]="disabled? '' : null"  (selectionChange)="changeSMEArea($event.value)" multiple formControlName="title" class="form-control" [ngClass]="{ 'is-invalid': submitted}" > 
+              <mat-option value="">select</mat-option>
+              <!-- <mat-option value="">12</mat-option><mat-option [value]="">13</mat-option> -->
+          
+              <mat-option   *ngFor="let sme of allSMEArea" [value]="sme.value">
+                {{sme.viewValue}}
+            </mat-option>
+            </mat-select>
+
+          </mat-form-field>
+          <!-- <div *ngIf="submitted && f.title3.errors" class="invalid-feedback">
+              <div *ngIf="f.title3.errors.required">Market Unit is required</div>
+          </div> -->
+    </div>
+    <div class="ciap-dropdown">
+      <p>SBU Name*</p>
+      <mat-form-field floatLabel='never'>
+          <mat-label>Select</mat-label>
+          <mat-select [attr.disabled]="disabledSBU? '' : null"   [disabled]="disabledSBU? '' : null" (selectionChange)="changeSBUs($event.value)"  formControlName="title2" class="form-control" [ngClass]="{ 'is-invalid': submitted }" >
+            <mat-option value="">select</mat-option>
+            <!-- <mat-option value="">12</mat-option><mat-option [value]="">13</mat-option> -->
+              <mat-option *ngFor="let sbuname of allSBUsArray" [value]="sbuname.value">
+                  {{sbuname.viewValue}}
+              </mat-option>
+          </mat-select>
+ 
+        </mat-form-field>
+        <!-- <div *ngIf="submitted && f.title.errors" class="invalid-feedback">
+            <div *ngIf="f.title.errors.required">SBU is required</div>
+        </div> -->
+  </div>
+  <div  class="ciap-dropdown" style="float: right;">
+    <p>BU Name*</p>
+    <mat-form-field floatLabel='never'> 
+        <mat-label>Select</mat-label>
+        <mat-select [disabled]="disabledBU? '' : null" [attr.disabled]="disabledBU? '' : null" (selectionChange)="changeBUs($event.value)" formControlName="title3" class="form-control" [ngClass]="{ 'is-invalid': submitted  }" >
+          <mat-option value="">select</mat-option>
+          <!-- <mat-option value="">12</mat-option><mat-option [value]="">13</mat-option> -->
+          <mat-option *ngFor="let buname of allBUsArray" [value]="buname.value">
+            {{buname.viewValue}}
+        </mat-option>
+        </mat-select>
+
+      </mat-form-field>
+      <!-- <div *ngIf="submitted && f.title2.errors" class="invalid-feedback">
+          <div *ngIf="f.title2.errors.required">BU is required</div>
+      </div> -->
+</div>
+<div style="clear:both"></div>
+   </div>
+   <div class="dialog-row" style="text-align: center">
+    <button class="blue-outline-button" (click)="cancel()" mat-stroked-button color="primary">Cancel</button>
+&nbsp;
+<button   class="blue-solid-button" (click)="addRow()" mat-raised-button color="primary" [disabled]="registerForm.invalid">Add new</button>
+&nbsp;
+      <button class="blue-solid-button" (click)="saveAndSubmit()" mat-raised-button color="primary" [disabled]="registerForm.invalid">Save and submit</button>
+   
+
+
+</div>
+      </form>

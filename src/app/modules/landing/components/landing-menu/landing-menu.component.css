@@ -1,0 +1,118 @@
+.homeContainer{
+    background-image: url(src/assets/images/login.png);
+    background-size: cover;
+    height:100vh;
+    overflow: hidden;
+    -webkit-background-size:cover ;
+    -moz-background-size:cover ;
+    -o-background-size:cover;
+    padding-bottom: 17px;
+   
+}
+
+.landing-menu .form-group.row {
+  margin-top:20px;
+}
+
+.topnav-right {
+    float: right;
+    margin-right: 45px;
+    padding-top: 25px;
+  }
+  .alert_img{
+    margin-right:25px;
+  }
+  .container{ 
+    background-color: #f2f8fb;
+    margin-top: 3%;
+    height:430px;
+    padding: 20px 10px;
+    }
+
+  .welcomeText {
+    text-align: center;
+    width: 100%;
+    margin-bottom: 15px;
+    font-size: 13px;
+    margin-top: 10px !important;
+    font-style: italic;
+  }
+  .header{
+      background-color: #f2f8fb;
+      text-align: center;
+      padding-top:10px;
+  }
+  .header img{
+    height: 40px;
+    width: 200px;
+  }
+  .gridContainer
+  {
+    padding: 0px 100px;
+    margin-top:20px;
+    padding-bottom: 40px;
+  }
+
+  .cardImg{
+  margin: 0 auto;
+  margin-top: 10px;
+  
+ 
+  }
+  .card{
+    height:200px;
+    width: 150px;
+    opacity: 0.3 ;
+    cursor: none;
+    transition: height 0.5s;
+    padding-top:10px;
+    background-color: white;
+    border-radius: 5px;
+    -moz-box-shadow: 0 0 5px #999;
+    -webkit-box-shadow: 0 0 5px #999;
+    box-shadow: 0 0 5px #999;
+  }
+  
+  .cardImg img{
+    height:110px;
+    width: 80px;
+    padding-bottom: 12px;
+    margin:0 auto;
+ 
+   }
+   .mg-r-30{
+    margin-right: 30px;
+   }
+   .border{
+    margin-left: 10px;
+    margin-right: 10px;
+    border: 1px solid #0064a6 !important;
+   }
+   .enable{
+     opacity: 1 !important;
+     cursor: pointer;
+     background-color: white;
+     padding-top:10px;
+   }
+   .enable .card-block, .enable .border {
+   transition: all .4s ease;
+  -webkit-transition: all .4s ease;
+   }
+   .enable:hover .card-block, .enable:hover .border {
+     margin-top:10px;
+   }
+   .card-title {
+     text-align: center;
+     margin:0 auto;
+     color:#0064a6;
+     font-family:Ubuntu-Regular;
+  }
+
+  h1.card-title {
+    text-align: center;
+     margin:0 auto;
+     color:#2b0a3d;
+     font-family:Ubuntu-Medium;
+    font-size:25px;
+  }
+  

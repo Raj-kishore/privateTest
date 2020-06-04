@@ -1,0 +1,208 @@
+<form class="dialog-wrapper" style="overflow: hidden;" [formGroup]="initiateAssessmentForm"
+    (ngSubmit)="initiateAssessment()">
+
+
+    <div class="dialog-header">Initiate Assessment</div>
+    <div class="assessmentWrapper no-gutter">
+        <mat-horizontal-stepper [linear]="isLinear" #stepper>
+            <mat-step formGroupName="assessmentDetails" errorMessage="Name is required.">
+                <ng-template matStepLabel>Assessment Details</ng-template>
+                <div class="col-md-12 paddingR0">
+                <div class="col-md-6">
+                    <div class="col-md-12">
+                        <p>Assessment Template Name*</p>
+                        <mat-form-field floatLabel='never'>
+                            <mat-label>Select</mat-label>
+                            <mat-select formControlName="assessmentTemplate" class="form-control">
+                                <mat-option>
+                                    value1
+                                </mat-option>
+                            </mat-select>
+
+                        </mat-form-field>
+                        <!-- <div *ngIf="submitted && f.title.errors" class="invalid-feedback">
+                              <div *ngIf="f.title.errors.required">SBU is required</div>
+                          </div> -->
+                    </div>
+
+                    <div class="col-md-12 marginT20">
+                    <p>Assessment Name</p>
+                    <mat-form-field floatLabel=never>
+                        <mat-label>Name</mat-label>
+                        <input matInput placeholder="Enter Assessment Name" class="form-control"
+                            formControlName="assessmentName">
+                    </mat-form-field>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <p>Effective dates</p>
+                    <div class="ciap-date">
+                        <mat-form-field color="accent" floatLabel='never'>
+                            <mat-label>&nbsp;/&nbsp;&nbsp;/</mat-label>
+                            <input formControlName="startDate" class="form-control"
+                                (dateChange)="startEvent('change', $event)" (dateInput)="startEvent('change', $event)"
+                                matInput [min]="minDate1" [matDatepicker]="picker1">
+                            <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+                            <mat-datepicker #picker1></mat-datepicker>
+
+                        </mat-form-field>
+                        <!-- <div *ngIf="submitted && f.starter.errors" class="invalid-feedback">
+                    <div *ngIf="f.starter.errors.required">Start date is required</div>
+                </div> -->
+                        <p>Start Date</p>
+                    </div>
+                    <div class="ciap-date">
+                        <mat-form-field color="accent" floatLabel='never'>
+                            <mat-label>&nbsp;/&nbsp;&nbsp;/</mat-label>
+                            <input formControlName="endDate" class="form-control"
+                                (dateChange)="endEvent('change', $event)" matInput [min]="minDate2"
+                                [matDatepicker]="picker2">
+                            <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
+                            <mat-datepicker #picker2 color="primary"></mat-datepicker>
+
+                        </mat-form-field>
+                        <!-- <div *ngIf="submitted && f.ender.errors" class="invalid-feedback">
+                                <div *ngIf="f.ender.errors.required">End date is required</div>
+                            </div> -->
+                        <p>End Date</p>
+                    </div>
+                </div>
+                </div>
+                <div class="backNextButton">
+                    <button mat-button matStepperNext type="button" class="blue-solid-button pull-right">Next</button>
+                </div>
+            </mat-step>
+            <mat-step formGroupName="accountDetails" errorMessage="Address is required.">
+                <ng-template matStepLabel>Account Details</ng-template>
+                <div class="col-md-12 paddingR0">
+                    <div class="col-md-6">
+                            <p>SBU Name*</p>
+                            <mat-form-field floatLabel='never'>
+                                <mat-label>Select</mat-label>
+                                <mat-select formControlName="sbuName" class="form-control">
+                                    <mat-option>
+                                        value1
+                                    </mat-option>
+                                </mat-select>
+    
+                            </mat-form-field>
+                            <!-- <div *ngIf="submitted && f.title.errors" class="invalid-feedback">
+                                  <div *ngIf="f.title.errors.required">SBU is required</div>
+                              </div> -->
+                            </div>
+                            <div class="col-md-6">
+                            <p>BU Name*</p>
+                            <mat-form-field floatLabel='never'>
+                                <mat-label>Select</mat-label>
+                                <mat-select formControlName="buName" class="form-control">
+                                    <mat-option>
+                                        value1
+                                    </mat-option>
+                                </mat-select>
+    
+                            </mat-form-field>
+                            <!-- <div *ngIf="submitted && f.title.errors" class="invalid-feedback">
+                                  <div *ngIf="f.title.errors.required">SBU is required</div>
+                              </div> -->
+                        </div>
+                </div>
+                <div class="col-md-12 paddingR0 marginT20">
+                    <div class="col-md-6">
+                            <p>Market Unit*</p>
+                            <mat-form-field floatLabel='never'>
+                                <mat-label>Select</mat-label>
+                                <mat-select formControlName="marketUnit" class="form-control">
+                                    <mat-option>
+                                        value1
+                                    </mat-option>
+                                </mat-select>
+    
+                            </mat-form-field>
+                            <!-- <div *ngIf="submitted && f.title.errors" class="invalid-feedback">
+                                  <div *ngIf="f.title.errors.required">SBU is required</div>
+                              </div> -->
+                            </div>
+                            <div class="col-md-6">
+                            <p>Account Name*</p>
+                            <mat-form-field floatLabel='never'>
+                                <mat-label>Select</mat-label>
+                                <mat-select formControlName="accountName" class="form-control">
+                                    <mat-option>
+                                        value1
+                                    </mat-option>
+                                </mat-select>
+    
+                            </mat-form-field>
+                            <!-- <div *ngIf="submitted && f.title.errors" class="invalid-feedback">
+                                  <div *ngIf="f.title.errors.required">SBU is required</div>
+                              </div> -->
+                        </div>
+                </div>
+                <div class="backNextButton">
+                    <button mat-button matStepperNext type="button" class="blue-solid-button pull-right">Next</button>
+                    <button mat-button matStepperPrevious class="blue-outline-button pull-right">Back</button>
+                </div>
+            </mat-step>
+            <mat-step formGroupName="roleDetails">
+                <ng-template matStepLabel>Role details</ng-template>
+                <div class="col-md-12 paddingR0">
+                    <div class="col-md-6">
+                            <p>SME Name*</p>
+                            <mat-form-field floatLabel='never'>
+                                <mat-label>Select</mat-label>
+                                <mat-select formControlName="smeName" class="form-control">
+                                    <mat-option>
+                                        value1
+                                    </mat-option>
+                                </mat-select>
+    
+                            </mat-form-field>
+                            <!-- <div *ngIf="submitted && f.title.errors" class="invalid-feedback">
+                                  <div *ngIf="f.title.errors.required">SBU is required</div>
+                              </div> -->
+                            </div>
+                            <div class="col-md-6">
+                            <p>Account SPOC Name*</p>
+                            <mat-form-field floatLabel='never'>
+                                <mat-label>Select</mat-label>
+                                <mat-select formControlName="accSpocName" class="form-control">
+                                    <mat-option>
+                                        value1
+                                    </mat-option>
+                                </mat-select>
+    
+                            </mat-form-field>
+                            <!-- <div *ngIf="submitted && f.title.errors" class="invalid-feedback">
+                                  <div *ngIf="f.title.errors.required">SBU is required</div>
+                              </div> -->
+                        </div>
+                </div>
+                <div class="col-md-12 paddingR0 marginT20">
+                    <div class="col-md-6">
+                            <p>Project Members*</p>
+                            <mat-form-field floatLabel='never'>
+                                <mat-label>Select</mat-label>
+                                <mat-select formControlName="projMember" class="form-control">
+                                    <mat-option>
+                                        value1
+                                    </mat-option>
+                                </mat-select>
+    
+                            </mat-form-field>
+                            <!-- <div *ngIf="submitted && f.title.errors" class="invalid-feedback">
+                                  <div *ngIf="f.title.errors.required">SBU is required</div>
+                              </div> -->
+                            </div>
+                </div>
+
+                
+                <div class="backNextButton">
+                    <button mat-button matStepperNext type="submit" class="blue-solid-button pull-right">Submit</button>
+                    <button mat-button matStepperPrevious class="blue-outline-button pull-right">Back</button>
+                </div>
+            </mat-step>
+        </mat-horizontal-stepper>
+    </div>
+
+
+</form>

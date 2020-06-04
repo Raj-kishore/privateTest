@@ -1,0 +1,11 @@
+<div class="commonHeader">
+    <i class="icon homeIcon" routerLink='/landing-menu'></i>
+    <span class="headerTitle">Assessment Online Portal</span>
+    <div class="navRight">
+        <i class="icon notifyIcon"></i>
+        <i class="icon userIcon marginL10" [matMenuTriggerFor]="menu" ></i>
+        <mat-menu #menu="matMenu">
+            <button mat-menu-item (click)="logout()">Logout</button>
+        </mat-menu>
+    </div>
+</div>

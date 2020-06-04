@@ -1,0 +1,44 @@
+{
+    "success": "true",
+    "message": "assessment templates retrieval successful",
+    "returnValue": [{
+        "templateid": "1",
+        "templateName": "Template Name1",
+        "templatetype": "Template Type1",
+        "effectivedate": "13/04/2020",
+        "activeStatus": true,
+        "dimensions": "information about the dimensions"
+    },
+    {
+        "templateid": "2",
+        "templateName": "Template Name2",
+        "templatetype": "Template Type1",
+        "effectivedate": "13/04/2020",
+        "activeStatus": true,
+        "dimensions": "information about the dimensions"
+    },
+    {
+        "templateid": "3",
+        "templateName": "Template Name3",
+        "templatetype": "Template Type1",
+        "effectivedate": "13/04/2020",
+        "activeStatus": false,
+        "dimensions": "information about the dimensions"
+    },
+    {
+        "templateid": "4",
+        "templateName": "Template Name4",
+        "templatetype": "Template Type1",
+        "effectivedate": "13/04/2020",
+        "activeStatus": false,
+        "dimensions": "information about the dimensions"
+    },
+    {
+        "templateid": "5",
+        "templateName": "Template Name5",
+        "templatetype": "Template Type1",
+        "effectivedate": "13/04/2020",
+        "activeStatus": true,
+        "dimensions": "information about the dimensions"
+    }]
+}
